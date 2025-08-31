@@ -3,7 +3,7 @@ import Todo from './components/Todo.tsx';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f5ecd7] via-[#e9e4d0] to-[#6e8b7b]">
+    <div className="min-h-screen bg-gradient-to-br from-[#ff0000] via-[#e9e4d0] to-[#0000ff]">
       <Todo />
     </div>
   );

@@ -24,13 +24,11 @@ const Todo = () => {
         event.preventDefault();
         if (task.trim() !== "") {
             if (editingId) {
-                // Update existing todo
                 setTodos(todos.map(todo => 
                     todo.id === editingId ? { ...todo, text: task } : todo
                 ));
                 setEditingId(null);
             } else {
-                // Add new todo
                 const newTodo: TodoItem = {
                     id: Date.now(),
                     text: task,
@@ -67,9 +65,8 @@ const Todo = () => {
     };
 
     return (
-        <div className="max-w-lg mx-auto pt-16 px-4">
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
-                {/* Header */}
+        <div className="max-w-lg mx-auto pt-16 px-6 pb-16">
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/10 overflow-hidden">
                 <div className="bg-gradient-to-r from-indigo-500 to-purple-600 px-8 py-6">
                     <h1 className="text-2xl font-bold text-white flex items-center gap-3">
                         <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
@@ -80,7 +77,6 @@ const Todo = () => {
                     <p className="text-indigo-100 mt-1">Stay organized, stay productive</p>
                 </div>
 
-                {/* Add Task Form */}
                 <div className="p-8">
                     <form onSubmit={onSubmit} className="space-y-4">
                         <div className="relative">
@@ -125,7 +121,6 @@ const Todo = () => {
                     </form>
                 </div>
 
-                {/* Tasks List */}
                 <div className="px-8 pb-8">
                     {todos.length > 0 ? (
                         <div className="space-y-3">
