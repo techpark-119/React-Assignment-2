@@ -1,20 +1,12 @@
 import { useState } from "react";
-
-interface TodoItem {
-    id: number;
-    text: string;
-    completed: boolean;
-}
+import { useSelector, useDispatch } from 'react-redux';
+import type { RootState } from '../store/store';
+import { addTodo, deleteTodo, toggleTodo, updateTodo, setEditingId } from '../store/todoSlice';
 
 const Todo = () => {
     const [task, setTask] = useState("");
-    const [editingId, setEditingId] = useState<number | null>(null);
-    const [todos, setTodos] = useState<TodoItem[]>([
-        { id: 1, text: "Learn React", completed: false },
-        { id: 2, text: "Build a Todo App", completed: false },
-        { id: 3, text: "Play with Tailwind CSS", completed: false },
-        { id: 4, text: "Learn Vite", completed: false },
-    ]);
+    const dispatch = useDispatch();
+    const { todos, editingId } = useSelector((state: RootState) => state.todo);
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTask(event?.target.value);
@@ -24,39 +16,30 @@ const Todo = () => {
         event.preventDefault();
         if (task.trim() !== "") {
             if (editingId) {
-                setTodos(todos.map(todo => 
-                    todo.id === editingId ? { ...todo, text: task } : todo
-                ));
-                setEditingId(null);
+                dispatch(updateTodo({ id: editingId, text: task }));
+                dispatch(setEditingId(null));
             } else {
-                const newTodo: TodoItem = {
-                    id: Date.now(),
-                    text: task,
-                    completed: false
-                };
-                setTodos([...todos, newTodo]);
+                dispatch(addTodo(task));
             }
             setTask("");
         }
     };
 
     const deleteTask = (id: number) => {
-        setTodos(todos.filter(todo => todo.id !== id));
+        dispatch(deleteTodo(id));
     };
 
     const toggleComplete = (id: number) => {
-        setTodos(todos.map(todo => 
-            todo.id === id ? { ...todo, completed: !todo.completed } : todo
-        ));
+        dispatch(toggleTodo(id));
     };
 
     const startEdit = (id: number, text: string) => {
-        setEditingId(id);
+        dispatch(setEditingId(id));
         setTask(text);
     };
 
     const cancelEdit = () => {
-        setEditingId(null);
+        dispatch(setEditingId(null));
         setTask("");
     };
 
