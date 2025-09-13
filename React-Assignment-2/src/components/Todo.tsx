@@ -93,7 +93,7 @@ const Todo = () => {
                                 <button
                                     type="button"
                                     onClick={clearInput}
-                                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
                                 >
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -104,7 +104,7 @@ const Todo = () => {
                         <div className="flex gap-3">
                             <button
                                 type="submit"
-                                className={`${editingId ? 'flex-1' : 'w-full'} bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold py-4 rounded-2xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl`}
+                                className={`${editingId ? 'flex-1' : 'w-full'} bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold py-4 rounded-2xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl cursor-pointer`}
                             >
                                 {editingId ? 'Update Task' : 'Add Task'}
                             </button>
@@ -112,7 +112,7 @@ const Todo = () => {
                                 <button
                                     type="button"
                                     onClick={cancelEdit}
-                                    className="flex-1 bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700 text-white font-semibold py-4 rounded-2xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
+                                    className="flex-1 bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700 text-white font-semibold py-4 rounded-2xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl cursor-pointer"
                                 >
                                     Cancel
                                 </button>
@@ -142,7 +142,7 @@ const Todo = () => {
                                     <div className="flex items-center gap-3 flex-1">
                                         <button
                                             onClick={() => toggleComplete(todo.id)}
-                                            className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                                            className={`w-6 h-6 rounded-full border-2 flex items-center justify-center cursor-pointer transition-all ${
                                                 todo.completed
                                                     ? 'bg-green-500 border-green-500 text-white'
                                                     : 'border-gray-300 hover:border-indigo-400'
@@ -164,11 +164,11 @@ const Todo = () => {
                                             {editingId === todo.id ? '✏️ Editing...' : todo.text}
                                         </span>
                                     </div>
-                                    <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <div className="p-3 flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
                                         <button 
                                             onClick={() => startEdit(todo.id, todo.text)}
                                             disabled={editingId !== null}
-                                            className={`p-3 rounded-xl transition-all ${
+                                            className={` rounded-xl cursor-pointer transition-all ${
                                                 editingId !== null
                                                     ? 'text-gray-300 cursor-not-allowed'
                                                     : 'text-gray-400 hover:text-indigo-500 hover:bg-indigo-50'
@@ -181,7 +181,7 @@ const Todo = () => {
                                         <button
                                             onClick={() => deleteTask(todo.id)}
                                             disabled={editingId !== null}
-                                            className={`p-3 rounded-xl transition-all ${
+                                            className={`rounded-xl cursor-pointer transition-all ${
                                                 editingId !== null
                                                     ? 'text-gray-300 cursor-not-allowed'
                                                     : 'text-gray-400 hover:text-red-500 hover:bg-red-50'
