@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import todoReducer from './todoSlice';
 import quizReducer from './quizSlice';
+import stepperReducer from './stepperSlice';
 
 export const store = configureStore({
   reducer: {
     todo: todoReducer,
     quiz: quizReducer,
+    stepper: stepperReducer,
   },
 });
 
